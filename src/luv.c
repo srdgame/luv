@@ -519,6 +519,9 @@ static int loop_gc(lua_State *L) {
 
 LUALIB_API int luaopen_luv (lua_State *L) {
 
+  #ifdef SIGPIPE
+    signal(SIGPIPE, SIG_IGN);
+  #endif
   uv_loop_t* loop;
   int ret;
 
